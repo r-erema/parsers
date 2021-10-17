@@ -35,14 +35,14 @@ class ParseFifaIndex extends Command
     /**
      * @param InputInterface $input
      * @param OutputInterface $output
-     * @return int|void
+     * @return int
      * @throws ClientExceptionInterface
      * @throws RedirectionExceptionInterface
      * @throws ServerExceptionInterface
      * @throws TransportExceptionInterface
      * @throws Exception
      */
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $teams = $this->parser->parse();
         $sql = 'INSERT INTO teams (id, name, league, rating) VALUES ';
@@ -55,6 +55,7 @@ class ParseFifaIndex extends Command
         }
         $sql .= implode(',', $values) . ';';
         file_put_contents('teams.sql', $sql);
+        file_put_contents('teams.json', json_encode($teams));
 
         return 0;
     }

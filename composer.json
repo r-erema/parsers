@@ -5,7 +5,8 @@
         "symfony/dependency-injection": "^5.0",
         "symfony/http-client": "^5.0",
         "symfony/css-selector": "^5.0",
-        "ramsey/uuid": "^3.9"
+        "ramsey/uuid": "^3.9",
+        "ext-json": "*"
     }
     ,
     "require-dev": {
